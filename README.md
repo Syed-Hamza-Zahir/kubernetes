@@ -53,7 +53,7 @@
 - ``LoadBalancer``: Exposes the Service externally using a cloud provider’s load balancer.
   - NodePort and ClusterIP Services, to which the external load balancer routes, are automatically created.
 
-
+```
 ---
 
 apiVersion: apps/v1
