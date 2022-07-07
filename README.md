@@ -1,5 +1,5 @@
 # Kubernetes
-
+![kub.ben.png](kub.ben.png)
 ## Kubernetes Architecture
 - Kubernetes is an open source orchestrator for microservice apps
 - Kubernetes clusters together groups of hosts running containers, and helps you easily and efficiently manage those clusters.
