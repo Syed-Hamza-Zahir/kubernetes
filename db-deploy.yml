@@ -1,0 +1,24 @@
+---
+
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: mongodb
+spec:
+  selector:
+    matchLabels:
+      app: mongodb
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+        - name: mongodb
+          image: shazid98/eng114-shazid-app:db1
+          ports:
+            - containerPort: 27017
+          imagePullPolicy: Always 

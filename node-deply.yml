@@ -1,0 +1,27 @@
+---
+
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: node
+spec:
+  selector:
+    matchLabels:
+      app: node
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: node
+    spec:
+      containers:
+        - name: node
+          image: smhzaihr/node_app
+          env:
+          - name: DB_HOST
+            value: mongodb://10.103.26.21:27017/posts
+          ports:
+            - containerPort: 3000
+          imagePullPolicy: Always 
