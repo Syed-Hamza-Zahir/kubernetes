@@ -53,7 +53,7 @@
 - ``LoadBalancer``: Exposes the Service externally using a cloud provider’s load balancer.
   - NodePort and ClusterIP Services, to which the external load balancer routes, are automatically created.
 
- ````
+
 ---
 
 apiVersion: apps/v1
@@ -159,3 +159,47 @@ spec:
 - ``kubectl apply -f app_deploy.yml``
 
 - ``kubectl apply -f svc-app.yml``
+
+# Some components of K8
+
+## The Control plane (master)
+The Control plane is made up of the kube-api server, kube scheduler, cloud-controller-manager and kube-controller-manager. Kube proxies and kubelets live on each node, talking to the API and managing the workload of each node.
+
+As the control plane handles most of Kubernetes’ ‘decision making’, nodes which have these components running generally don’t have any user containers running - these are normally named as master nodes.
+
+## Cloud-controller-manager
+The cloud-controller-manager runs in the control plane as a replicated set of processes (typically, these would be containers in Pods). The cloud-controller-manager is what allows you to connect your clusters with the cloud provider’s API and only runs controllers specific to the cloud provider you’re using.
+
+## Etcd
+etcd is a distributed key-value store and the primary datastore of Kubernetes. It stores and replicates the Kubernetes cluster state.
+To run etcd, you first need to have a Kubernetes cluster and the command-line tool configured to communicate with said cluster.
+
+## Kubelet
+The kubelet functions as an agent within nodes and is responsible for the runnings of pod cycles within each node. Its functionality is watching for new or changed pod specifications from master nodes and ensuring that pods within the node that it resides in are healthy, and the state of pods matches the pod specification.
+
+## Kube-proxy
+Kube-proxy is a network proxy that runs on each node. It maintains network rules, which allow for network communication to Pods from network sessions inside or outside of a cluster. Kube-proxy is used to reach kubernetes services in addition to load balancing of services.
+
+## Kube-controller-manager
+The Kubernetes controller manager is a collection of controllers bundled within a single binary and run in a single process. The following controllers are present within this manager:
+
+ - Node controller: Responsible for identifying changes in nodes within the cluster
+
+ - Replication controller: Responsible for maintaining replications of objects in the cluster (such as replicasets)
+
+ - Endpoint controller: Responsible for provisioning of endpoints (such as service endpoints)
+
+ - Service account and token controllers: Responsible the management of service accounts within each namespace, as well as API access tokens
+
+## Kube-API Server
+The Kube-API server, a component within the control plane, validates and configures data for API objects, including pods and services. The API Server provides the frontend to the cluster's shared state, which is where all of the other components interact. This means that any access and authentication such as deployments of pods and other Kubernetes API objects via kubectl are handled by this API server.
+
+## Kube-scheduler
+Running as part of the control plane, the kube-scheduler’s responsibility is to assign pods to nodes within your cluster. The scheduler will use information such as compute requests and limits defined within your workload (if any), as well as finding the right node candidate based on its available resources to appropriately assign your workload to a particular node.
+
+## Node
+Kubernetes runs workloads by placing your pods into nodes. Depending on your environment, a node can represent a virtual or physical machine. Each node will contain the components necessary to run pods. There are two distinct classifications of a node within Kubernetes: Master and Worker nodes.
+
+### Worker nodes: Worker nodes will have an instance of kubelet, kube-proxy and a certain container runtime (such as Docker, containerd) running on each node, and are used to run user defined containers. These nodes are managed by the control plane.
+
+### Master nodes: A master node, or sometimes called control-plane nodes will have the control plane binaries bootstrapped, and will only be responsible for all components within the control plane, such as runnings of etcd and the kube-api-server. In order to achieve high availability with etcd to establish a quorum, there are normally more than 3 master nodes within a cluster.
