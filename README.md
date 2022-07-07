@@ -200,6 +200,8 @@ Running as part of the control plane, the kube-scheduler’s responsibility is t
 ## Node
 Kubernetes runs workloads by placing your pods into nodes. Depending on your environment, a node can represent a virtual or physical machine. Each node will contain the components necessary to run pods. There are two distinct classifications of a node within Kubernetes: Master and Worker nodes.
 
-### Worker nodes: Worker nodes will have an instance of kubelet, kube-proxy and a certain container runtime (such as Docker, containerd) running on each node, and are used to run user defined containers. These nodes are managed by the control plane.
+### Worker nodes
+Worker nodes will have an instance of kubelet, kube-proxy and a certain container runtime (such as Docker, containerd) running on each node, and are used to run user defined containers. These nodes are managed by the control plane.
 
-### Master nodes: A master node, or sometimes called control-plane nodes will have the control plane binaries bootstrapped, and will only be responsible for all components within the control plane, such as runnings of etcd and the kube-api-server. In order to achieve high availability with etcd to establish a quorum, there are normally more than 3 master nodes within a cluster.
+### Master nodes
+A master node, or sometimes called control-plane nodes will have the control plane binaries bootstrapped, and will only be responsible for all components within the control plane, such as runnings of etcd and the kube-api-server. In order to achieve high availability with etcd to establish a quorum, there are normally more than 3 master nodes within a cluster.
