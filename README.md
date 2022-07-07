@@ -20,7 +20,7 @@
     - All containers in a pods share a single IP
   - Load balances across all pods in a service
 
-[!node.png](node.png)
+![node.png](node.png)
 
 ### Pods
 - A pod is a ring-fenced (sandbox) environment to run containers
