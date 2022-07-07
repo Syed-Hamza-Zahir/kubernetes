@@ -1,7 +1,10 @@
 # Kubernetes
 
 ## Kubernetes Architecture
-- Kubernetes is an orchestrator for microservice apps
+- Kubernetes is an open source orchestrator for microservice apps
+- Kubernetes clusters together groups of hosts running containers, and helps you easily and efficiently manage those clusters.
+
+![jub.png](kub.png)
 
 - Cluster - made up of one or more masters and a bunch of nodes
   - Nodes (each node is a VM or physical machine) (can have many nodes in a cluster)
