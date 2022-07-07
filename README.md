@@ -142,7 +142,7 @@ spec:
 # Deploying Nodejs Sample App and MongoDB using Kubernetes
 
 
-# MongoDB deployments and Internal LoadBalancer
+## MongoDB deployments and Internal LoadBalancer
 - create the mongodb_deploy.yml and mongodb_service.yml files
 
 - ``kubectl apply -f db_deploy.yml``
@@ -152,7 +152,7 @@ spec:
   - run ``kubectl get svc``
 
 
-# App Deployment and LoadBalancer
+## App Deployment and LoadBalancer
 - create the app_deploy.yml and app_service.yml file
 
 - replace ``mongodb-svc`` in ``value: "mongodb://mongodb-svc:27017/posts"`` with the external IP of the mongodb service ``mongodb-svc`` then
