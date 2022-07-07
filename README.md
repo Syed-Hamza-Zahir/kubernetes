@@ -145,8 +145,8 @@ spec:
 # MongoDB deployments and Internal LoadBalancer
 - create the mongodb_deploy.yml and mongodb_service.yml files
 
-- ``kubectl apply -f mongodb_deploy.yml``
-- ``kubectl apply -f mongodb_service.yml``
+- ``kubectl apply -f db_deploy.yml``
+- ``kubectl apply -f svc_db.yml``
 
 - Find the external IP of the mongodb service ``mongodb-svc``
   - run ``kubectl get svc``
@@ -158,4 +158,4 @@ spec:
 - replace ``mongodb-svc`` in ``value: "mongodb://mongodb-svc:27017/posts"`` with the external IP of the mongodb service ``mongodb-svc`` then
 - ``kubectl apply -f app_deploy.yml``
 
-- ``kubectl apply -f app_service.yml``
+- ``kubectl apply -f svc-app.yml``
