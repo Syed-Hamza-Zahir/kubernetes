@@ -138,3 +138,24 @@ spec:
    - Kubernetes created a service and an external load balancer with a public IP address attached to it. The IP address remains the same for the life of the service. Any network traffic to that public IP address is routed to pods behind the service
 - ``kubectl logs <name_of_pod>``
   - get the logs of a pod
+
+# Deploying Nodejs Sample App and MongoDB using Kubernetes
+
+
+# MongoDB deployments and Internal LoadBalancer
+- create the mongodb_deploy.yml and mongodb_service.yml files
+
+- ``kubectl apply -f mongodb_deploy.yml``
+- ``kubectl apply -f mongodb_service.yml``
+
+- Find the external IP of the mongodb service ``mongodb-svc``
+  - run ``kubectl get svc``
+
+
+# App Deployment and LoadBalancer
+- create the app_deploy.yml and app_service.yml file
+
+- replace ``mongodb-svc`` in ``value: "mongodb://mongodb-svc:27017/posts"`` with the external IP of the mongodb service ``mongodb-svc`` then
+- ``kubectl apply -f app_deploy.yml``
+
+- ``kubectl apply -f app_service.yml``
