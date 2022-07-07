@@ -9,11 +9,6 @@
     - service (stable network endpoint to connect to one or multiple pods)
 
 ### Nodes - The Kubernetes Workers
-- ``Kubelet`` - The main kubernetes agent
-  - registers node with cluster
-  - Watches apiserver
-  - Instantiates pods
-  - Reports back to master
 - ``container engine`` - usually docker
 - ``kube-proxy`` - handles kubernetes networking
   - pod IP address
